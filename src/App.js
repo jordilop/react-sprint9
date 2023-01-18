@@ -1,10 +1,9 @@
 import './App.css';
+import Router from './components/Router/Router';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello Sprint 9!</h1>
-    </div>
+    <Router />
   );
 }
 
