@@ -1,9 +1,19 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
 import Router from './components/Router/Router';
+import { AuthProvider } from './context/authContext';
 
 function App() {
   return (
-    <Router />
+    <div className='vh-100 bg-secondary'>
+      <AuthProvider>
+        <BrowserRouter>
+          <NavBar />
+          <Router />
+        </BrowserRouter>
+      </AuthProvider>
+    </div>
   );
 }
 

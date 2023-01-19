@@ -4,6 +4,18 @@
 
 $ npm i react-router-dom
 
+## bootstrap
+
+$ npm i bootstrap
+
+## react-bootstrap (components)
+
+$ npm i react-bootstrap
+
+## firebase
+
+$ npm i firebase
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
