@@ -5,6 +5,7 @@ import {
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import ResetPassword from '../ResetPassword/ResetPassword';
 
 function Router() {
     return (
@@ -13,6 +14,7 @@ function Router() {
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/reset' element={<ResetPassword />} />
             </Routes>
         </div>
     )

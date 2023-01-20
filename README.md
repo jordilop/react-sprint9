@@ -16,6 +16,14 @@ $ npm i react-bootstrap
 
 $ npm i firebase
 
+## react-icons (fa === Font Awesome)
+
+$ npm i react-icons
+
+## axios
+
+$ npm i axios
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

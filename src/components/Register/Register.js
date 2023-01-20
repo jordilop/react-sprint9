@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Alert, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Register() {
 
     const [user, setUser] = useState({
         email: '',
-        password: ''
+        password: '',
+        showPassword: false
     });
 
     const { signup } = useAuth();
@@ -24,13 +26,19 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-
         try {
             await signup(user.email, user.password);
             navigate('/');
         } catch (error) {
             setError(error.message);
         }
+    }
+
+    const handleShowPassword = () => {
+        setUser({
+            ...user,
+            showPassword: !user.showPassword
+        });
     }
 
     return (
@@ -46,17 +54,26 @@ function Register() {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="d-flex">
                     <label htmlFor="password">Password</label>
                     <input
-                        type="password"
+                        type={user.showPassword ? "text" : "password"}
                         name="password"
                         placeholder="******"
                         onChange={handleChange}
                     />
+                    <Button variant="light" onClick={handleShowPassword} size="sm">
+                        {
+                            user.showPassword ?
+                                <FaEyeSlash />
+                                :
+                                <FaEye />
+                        }
+                    </Button>
                 </div>
-                <button>Register</button>
+                <button>Sign up</button>
             </form>
+            <p>Do you have an account?<Link className="link-dark ms-1" to='/login'>Login</Link></p>
             {
                 error
                 &&
