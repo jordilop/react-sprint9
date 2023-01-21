@@ -25,7 +25,8 @@ function BookList() {
             getBookList(40, 'books', 'es', searchTerm)
                 .then(response => {
                     // console.log(response.data)
-                    setData(response.data.items);
+                    const itemsToShow = filterBooksWithImage(response.data.items);
+                    setData(itemsToShow);
                     setTotalItems(response.data.totalItems);
                 })
                 .catch(error => setError(error));
@@ -44,10 +45,10 @@ function BookList() {
             </Form>
             <Row>
                 {console.log(`Total items: ${totalItems}`)}
-                {console.log(`Total show: ${filterBooksWithImage(data).length}`)}
+                {console.log(`Total show: ${data.length}`)}
                 {
-                    searchTerm && totalItems > 0 ?
-                        filterBooksWithImage(data).map((book, index) => <Book key={index} title={book.volumeInfo.title} image={book.volumeInfo.imageLinks.thumbnail} />)
+                    searchTerm && data.length > 0 ?
+                        data.map((book, index) => <Book key={index} title={book.volumeInfo.title} image={book.volumeInfo.imageLinks.thumbnail} />)
                         :
                         <div>No data.</div>
                 }
