@@ -6,7 +6,7 @@ import { AuthProvider } from './context/authContext';
 
 function App() {
   return (
-    <div className='vh-100 bg-secondary'>
+    <div className='vh-100 bg-white'>
       <AuthProvider>
         <BrowserRouter>
           <NavBar />

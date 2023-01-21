@@ -24,6 +24,10 @@ $ npm i react-icons
 
 $ npm i axios
 
+## animate.css
+
+$ npm i animate.css
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
