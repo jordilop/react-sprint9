@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Form, Row } from "react-bootstrap";
 import Book from "../Book/Book";
+import { getBookList } from "../../services/books";
 
 function BookList() {
-    const url = 'https://www.googleapis.com/books/v1/volumes?maxResults=40&printType=books&langRestrict=es&q=intitle:';
 
     const [data, setData] = useState([]);
     const [error, setError] = useState();
@@ -23,8 +22,7 @@ function BookList() {
 
     useEffect(() => {
         if (searchTerm) {
-            axios
-                .get(url + searchTerm)
+            getBookList(40, 'books', 'es', searchTerm)
                 .then(response => {
                     // console.log(response.data)
                     setData(response.data.items);
