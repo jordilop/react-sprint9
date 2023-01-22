@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Form, Row } from "react-bootstrap";
 import BookCard from "../BookCard/BookCard";
 import { getBookList } from "../../services/books";
+import Loading from "../Loading/Loading";
 
 function BookList() {
 
@@ -12,6 +13,8 @@ function BookList() {
     const minSearchTerm = 3;
     const [totalItems, setTotalItems] = useState(0);
 
+    const [loading, setLoading] = useState(false);
+
     const handleChange = (e) => {
         const length = e.target.value.length;
         length >= minSearchTerm ? setSearchTerm(e.target.value) : setSearchTerm('');
@@ -21,16 +24,19 @@ function BookList() {
 
     useEffect(() => {
         if (searchTerm) {
+            setLoading(true);
             getBookList(40, 'books', 'es', searchTerm)
                 .then(response => {
                     // console.log(response.data)
                     const itemsToShow = filterBooksWithImage(response.data.items);
                     setData(itemsToShow);
                     setTotalItems(response.data.totalItems);
+                    setLoading(false);
                 })
                 .catch(error => {
                     console.log(error);
-                    setError(error)
+                    setError(error);
+                    setLoading(false);
                 });
         }
     }, [searchTerm]);
@@ -50,6 +56,7 @@ function BookList() {
             <Row className="justify-content-center">
                 {console.log(`Total items: ${totalItems}`)}
                 {console.log(`Total show: ${data.length}`)}
+                {loading && <Loading />}
                 {
                     searchTerm && data.length > 0 ?
                         data.map((book, index) => {
