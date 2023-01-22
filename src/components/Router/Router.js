@@ -2,6 +2,7 @@ import {
     Routes,
     Route,
 } from 'react-router-dom';
+import BookDetail from '../BookDetail/BookDetail';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
@@ -15,6 +16,7 @@ function Router() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/reset' element={<ResetPassword />} />
+                <Route path='/book/:bookId' element={<BookDetail />} />
             </Routes>
         </div>
     )

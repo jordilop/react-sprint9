@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Form, Row } from "react-bootstrap";
-import Book from "../Book/Book";
+import BookCard from "../BookCard/BookCard";
 import { getBookList } from "../../services/books";
 
 function BookList() {
@@ -43,12 +43,21 @@ function BookList() {
                     </Form.Text>
                 </Form.Group>
             </Form>
-            <Row>
+            <Row className="justify-content-center">
                 {console.log(`Total items: ${totalItems}`)}
                 {console.log(`Total show: ${data.length}`)}
                 {
                     searchTerm && data.length > 0 ?
-                        data.map((book, index) => <Book key={index} title={book.volumeInfo.title} image={book.volumeInfo.imageLinks.thumbnail} />)
+                        data.map((book, index) => {
+                            return (
+                                <BookCard
+                                    key={index}
+                                    title={book.volumeInfo.title}
+                                    image={book.volumeInfo.imageLinks.thumbnail}
+                                    bookId={book.id}
+                                />
+                            )
+                        })
                         :
                         <div>No data.</div>
                 }

@@ -8,5 +8,7 @@ export const getBookList = (maxResults, printType, langRestrict, searchTerm) => 
             langRestrict: langRestrict,
             q: `intitle:${searchTerm}`
         }
-    })
+    });
 }
+
+export const getBookDetails = id => axiosClient.get(`/volumes/${id}`);
