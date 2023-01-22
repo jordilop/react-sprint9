@@ -28,6 +28,10 @@ $ npm i axios
 
 $ npm i animate.css
 
+## html-react-parser
+
+$ npm i html-react-parser
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -17,8 +17,7 @@ function BookList() {
         length >= minSearchTerm ? setSearchTerm(e.target.value) : setSearchTerm('');
     }
 
-    const filterBooksWithImage = (books) => books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks'));
-
+    const filterBooksWithImage = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
 
     useEffect(() => {
         if (searchTerm) {
@@ -29,9 +28,14 @@ function BookList() {
                     setData(itemsToShow);
                     setTotalItems(response.data.totalItems);
                 })
-                .catch(error => setError(error));
+                .catch(error => {
+                    console.log(error);
+                    setError(error)
+                });
         }
     }, [searchTerm]);
+
+    if (error) return `Error: ${error}`;
 
     return (
         <>
