@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
         })
     }, []);
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <authContext.Provider value={{ signup, login, user, logout, resetPassword, loginWithGoogle, loading }}>

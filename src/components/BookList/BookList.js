@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import { getBookList } from "../../services/books";
 import { Form, Row } from "react-bootstrap";
 import BookCard from "../BookCard/BookCard";
-import { getBookList } from "../../services/books";
 import Loading from "../Loading/Loading";
 
 function BookList() {
@@ -9,23 +10,24 @@ function BookList() {
     const [data, setData] = useState([]);
     const [error, setError] = useState();
 
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams({ "q": '' });
     const minSearchTerm = 3;
     const [totalItems, setTotalItems] = useState(0);
 
     const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
-        const length = e.target.value.length;
-        length >= minSearchTerm ? setSearchTerm(e.target.value) : setSearchTerm('');
+        const { value } = e.target;
+        value ? setSearchParams({ "q": value }) : setSearchParams('');
     }
 
     const filterBooksWithImage = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
 
     useEffect(() => {
-        if (searchTerm) {
+        setData([]);
+        if (searchParams.get('q').length >= minSearchTerm) {
             setLoading(true);
-            getBookList(40, 'books', 'es', searchTerm)
+            getBookList(40, 'books', 'es', searchParams.get('q'))
                 .then(response => {
                     // console.log(response.data)
                     const itemsToShow = filterBooksWithImage(response.data.items);
@@ -39,15 +41,21 @@ function BookList() {
                     setLoading(false);
                 });
         }
-    }, [searchTerm]);
+    }, [searchParams]);
 
     if (error) return `Error: ${error}`;
 
     return (
         <>
-            <Form>
+            <Form onSubmit={e => e.preventDefault()}>
                 <Form.Group className="mb-3">
-                    <Form.Control type="text" placeholder="Enter book title" name="search" onChange={handleChange} />
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter book title"
+                        name="search"
+                        onChange={handleChange}
+                        value={searchParams.get('q') ? searchParams.get('q') : ''}
+                    />
                     <Form.Text className="text-muted">
                         To display results, minimum length 3 characters.
                     </Form.Text>
@@ -58,7 +66,7 @@ function BookList() {
                 {console.log(`Total show: ${data.length}`)}
                 {loading && <Loading />}
                 {
-                    searchTerm && data.length > 0 ?
+                    searchParams.get('q') && data.length > 0 ?
                         data.map((book, index) => {
                             return (
                                 <BookCard
