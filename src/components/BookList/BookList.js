@@ -29,6 +29,8 @@ function BookList() {
     const handleChange = (e) => {
         const { value } = e.target;
         value ? setSearchParams({ "q": value }) : setSearchParams('');
+        setStartIndex(0);
+        setCurrentPage(1);
     }
 
     const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
