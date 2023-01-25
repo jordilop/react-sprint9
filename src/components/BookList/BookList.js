@@ -4,6 +4,7 @@ import { getBookList } from "../../services/books";
 import { Form, Row } from "react-bootstrap";
 import BookCard from "../BookCard/BookCard";
 import Loading from "../Loading/Loading";
+import Paginate from "../Paginate/Paginate";
 
 function BookList() {
 
@@ -16,6 +17,14 @@ function BookList() {
     const [searchParams, setSearchParams] = useSearchParams({ "q": '' });
     const minSearchTerm = 3;
 
+    //paginate
+    const [currentPage, setCurrentPage] = useState(1);
+    const [maxResults] = useState(40);
+    const [startIndex, setStartIndex] = useState(0);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+    const prevPage = () => currentPage !== 1 ? setCurrentPage(currentPage - 1) : false;
+    const nextPage = () => currentPage !== Math.ceil(totalItems / maxResults) ? setCurrentPage(currentPage + 1) : false;
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -24,9 +33,9 @@ function BookList() {
 
     const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
 
-    const fetchData = () => {
+    const fetchData = (startIndex) => {
         setLoading(true);
-        getBookList(40, 'books', 'es', searchParams.get('q'))
+        getBookList(startIndex, maxResults, 'books', 'es', searchParams.get('q'))
             .then(response => {
                 setData(response.data);
                 setTotalItems(response.data.totalItems);
@@ -40,12 +49,16 @@ function BookList() {
     }
 
     useEffect(() => {
+        setStartIndex(maxResults * (currentPage - 1));
+    }, [currentPage]);
+
+    useEffect(() => {
         setDataFilter(filterData(data.items));
     }, [data]);
 
     useEffect(() => {
-        searchParams.get('q').length >= minSearchTerm ? fetchData() : setData([]);
-    }, [searchParams]);
+        searchParams.get('q').length >= minSearchTerm ? fetchData(startIndex) : setData([]);
+    }, [searchParams, startIndex]);
 
     if (error) return `Error: ${error}`;
 
@@ -65,6 +78,18 @@ function BookList() {
                     </Form.Text>
                 </Form.Group>
             </Form>
+
+            {
+                dataFilter.length > 0 && <Paginate
+                    maxResults={maxResults}
+                    totalItems={totalItems}
+                    paginate={paginate}
+                    currentPage={currentPage}
+                    prevPage={prevPage}
+                    nextPage={nextPage}
+                />
+            }
+
             <Row className="justify-content-center">
                 {console.log(`Total items: ${totalItems}`)}
                 {console.log(`Total show: ${dataFilter.length}`)}
