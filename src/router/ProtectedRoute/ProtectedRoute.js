@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import Loading from "../Loading/Loading";
+import Loading from "../../components/Loading/Loading";
 
 function ProtectedRoute({ children }) {
 

@@ -2,18 +2,19 @@ import {
     Routes,
     Route,
 } from 'react-router-dom';
-import BookDetail from '../BookDetail/BookDetail';
-import Home from '../Home/Home';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
-import ResetPassword from '../ResetPassword/ResetPassword';
+import BookDetail from '../../components/BookDetail/BookDetail';
+import Error from '../../pages/Error/Error';
+import Home from '../../pages/Home/Home';
+import Login from '../../pages/Login/Login';
+import Register from '../../pages/Register/Register';
+import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function Router() {
     return (
         <div>
             <Routes>
-                <Route path='*' element={<div><h3>Error page in construction</h3></div>} />
+                <Route path='*' element={<Error />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/reset' element={<ResetPassword />} />
