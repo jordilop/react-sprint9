@@ -14,13 +14,13 @@ function BookList() {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
 
-    const [searchParams, setSearchParams] = useSearchParams({ "q": '' });
+    const [searchParams, setSearchParams] = useSearchParams({ q: '', page: '' });
     const minSearchTerm = 3;
 
     //paginate
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(searchParams.get("page") ? Number(searchParams.get("page")) : 1);
     const [maxResults] = useState(40);
-    const [startIndex, setStartIndex] = useState(0);
+    const [startIndex, setStartIndex] = useState(searchParams.get("page") ? maxResults * (currentPage - 1) : 0);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const prevPage = () => currentPage !== 1 ? setCurrentPage(currentPage - 1) : false;
@@ -28,9 +28,10 @@ function BookList() {
 
     const handleChange = (e) => {
         const { value } = e.target;
-        value ? setSearchParams({ "q": value }) : setSearchParams('');
+        value ? setSearchParams({ q: value, page: currentPage }) : setSearchParams('');
         setStartIndex(0);
         setCurrentPage(1);
+        setTotalItems(0);
     }
 
     const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
@@ -40,7 +41,7 @@ function BookList() {
         getBookList(startIndex, maxResults, 'books', 'es', searchParams.get('q'))
             .then(response => {
                 setData(response.data);
-                setTotalItems(response.data.totalItems);
+                !totalItems && setTotalItems(response.data.totalItems);
                 setLoading(false);
             })
             .catch(error => {
@@ -52,14 +53,19 @@ function BookList() {
 
     useEffect(() => {
         setStartIndex(maxResults * (currentPage - 1));
-    }, [currentPage]);
+    }, [currentPage, maxResults]);
 
     useEffect(() => {
         setDataFilter(filterData(data.items));
     }, [data]);
 
     useEffect(() => {
-        searchParams.get('q').length >= minSearchTerm ? fetchData(startIndex) : setData([]);
+        if (searchParams.get('q').length >= minSearchTerm) {
+            fetchData(startIndex);
+            setSearchParams({ q: searchParams.get("q"), page: currentPage });
+        } else {
+            setData([]);
+        }
     }, [searchParams, startIndex]);
 
     if (error) return `Error: ${error}`;
@@ -93,11 +99,8 @@ function BookList() {
             }
 
             <Row className="justify-content-center">
-                {console.log(`Total items: ${totalItems}`)}
-                {console.log(`Total show: ${dataFilter.length}`)}
                 {loading && <Loading />}
                 {
-                    // searchParams.get('q') && data.length > 0 ?
                     dataFilter.length > 0 ?
                         dataFilter.map((book, index) => {
                             return (
