@@ -1,15 +1,15 @@
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
 import Router from './router/Router/Router';
 import { AuthProvider } from './context/authContext';
+import Header from './pages/Header/Header';
 
 function App() {
   return (
     <div className='vh-100 bg-white'>
       <AuthProvider>
         <BrowserRouter>
-          <NavBar />
+          <Header />
           <Router />
         </BrowserRouter>
       </AuthProvider>

@@ -1,21 +1,16 @@
 import { Col, Container, Row } from "react-bootstrap";
-import BookList from "../../components/BookList/BookList";
-
 
 function Home() {
     return (
-        <Container>
-            <Row className="text-center">
-                <Col>
-                    <h2>Home</h2>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <BookList />
-                </Col>
-            </Row>
-        </Container>
+        <>
+            <Container fluid className="bg-dark">
+                <Row className="text-center">
+                    <Col>
+                        <h2>Home</h2>
+                    </Col>
+                </Row>
+            </Container>
+        </>
     )
 }
 

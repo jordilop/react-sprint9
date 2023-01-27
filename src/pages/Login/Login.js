@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { BsGoogle } from "react-icons/bs";
 
 function Login() {
 
@@ -52,53 +53,59 @@ function Login() {
     }
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="mail@mail.com"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="d-flex">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type={user.showPassword ? "text" : "password"}
-                        name="password"
-                        placeholder="******"
-                        onChange={handleChange}
-                    />
-                    <Button variant="light" onClick={handleShowPassword} size="sm">
+        <Container>
+            <Row className="vh-100 justify-content-center align-items-center">
+                <Col md={6} className="border rounded p-3 p-md-5">
+                    <h4 className="text-center mb-4">Login</h4>
+                    <Form className="text-secondary" onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <InputGroup>
+                                <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
+                                <InputGroup.Text id="btnEmail">@</InputGroup.Text>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formPassword">
+                            <Form.Label>Password</Form.Label>
+                            <InputGroup>
+                                <Form.Control type={user.showPassword ? " text" : "password"} name="password" placeholder="Password" onChange={handleChange} />
+                                <InputGroup.Text id="btnEmail" type="button" onClick={handleShowPassword}>
+                                    {user.showPassword ? <FaEyeSlash /> : <FaEye />}
+                                </InputGroup.Text>
+                            </InputGroup>
+                        </Form.Group>
+                        <Form.Group className="mb-3 text-center" controlId="formForgot">
+                            <Form.Label>
+                                Forgot password?<Link className="link-secondary ms-1" to='/reset'>Click</Link>
+                            </Form.Label>
+                        </Form.Group>
+                        <Col lg={6} className="d-grid mx-auto">
+                            <Button variant="primary" type="submit">Login</Button>
+                        </Col>
+                        <div className="border-bottom my-3"></div>
+                        <Col lg={6} className="d-grid mx-auto">
+                            <Button variant="outline-danger" onClick={handleGoogleSignIn}>
+                                <BsGoogle className="me-2" />
+                                Login with Google
+                            </Button>
+                        </Col>
+                        <Form.Group className="my-3 text-center" controlId="formRegister">
+                            <Form.Label>
+                                Don't have an account?<Link className="link-primary ms-1" to='/register'>Register here</Link>
+                            </Form.Label>
+                        </Form.Group>
                         {
-                            user.showPassword ?
-                                <FaEyeSlash />
-                                :
-                                <FaEye />
+                            error &&
+                            <Row className="text-center">
+                                <Alert variant="danger">
+                                    {error}
+                                </Alert>
+                            </Row>
                         }
-                    </Button>
-                </div>
-                <button>Login</button>
-                <p>Forgot password?<Link className="link-dark ms-1" to='/reset'>Click</Link></p>
-            </form>
-
-            <button onClick={handleGoogleSignIn}>Google Login</button>
-
-            <p>Don't have an account?<Link className="link-dark ms-1" to='/register'>Sign up</Link></p>
-            {
-                error
-                &&
-                <div className="d-flex">
-                    <Alert variant="danger" className="mt-2">
-                        <Alert.Heading>Error</Alert.Heading>
-                        {error}
-                    </Alert>
-                </div>
-            }
-        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
