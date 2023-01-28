@@ -1,9 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap";
+import Slide from "../../components/Slide/Slide";
 
 function Home() {
     return (
         <>
-            <Container fluid className="bg-dark">
+            <Slide />
+
+            <Container fluid>
                 <Row className="text-center">
                     <Col>
                         <h2>Home</h2>

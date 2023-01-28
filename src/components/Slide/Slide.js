@@ -8,46 +8,33 @@ function Slide() {
         maxHeight: '20rem'
     }
 
+    const fakeData = [
+        { title: 'First book', src: { testImage }, },
+        { title: 'Second book', src: { testImage }, },
+        { title: 'Third book', src: { testImage }, },
+        { title: 'Fourth book', src: { testImage }, },
+        { title: 'Fifth book', src: { testImage }, },
+    ];
+
     return (
         <Container fluid className="p-0">
             <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100" style={imgStyle}
-                        src={testImage}
-                        alt="..."
-                    />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 h-50" style={imgStyle}
-                        src={testImage}
-                        alt="..."
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 h-50" style={imgStyle}
-                        src={testImage}
-                        alt="..."
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </Carousel.Caption>
-                </Carousel.Item>
+                {
+                    fakeData.map((book, item) => {
+                        return (
+                            <Carousel.Item key={item}>
+                                <img
+                                    className="d-block w-100" style={imgStyle}
+                                    src={testImage}
+                                    alt={book.title}
+                                />
+                                <Carousel.Caption>
+                                    <h3>{book.title}</h3>
+                                    <p>{book.title}</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>)
+                    })
+                }
             </Carousel>
         </Container>
     )

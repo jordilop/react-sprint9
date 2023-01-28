@@ -3,6 +3,7 @@ import {
     Route,
 } from 'react-router-dom';
 import BookDetail from '../../components/BookDetail/BookDetail';
+import Books from '../../pages/Books/Books';
 import Error from '../../pages/Error/Error';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
@@ -18,7 +19,8 @@ function Router() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/reset' element={<ResetPassword />} />
-                <Route path='/book/:bookId' element={<ProtectedRoute><BookDetail /></ProtectedRoute>} />
+                <Route path='/books' element={<Books />} />
+                <Route path='/books/:bookId' element={<ProtectedRoute><BookDetail /></ProtectedRoute>} />
                 <Route path='/' element={<Home />} />
             </Routes>
         </div>

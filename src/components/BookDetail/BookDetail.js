@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getBookDetails } from "../../services/books";
 import parse from "html-react-parser";
 import Loading from "../Loading/Loading";
+import { Col, Container, Row } from "react-bootstrap";
 
 
 function BookDetail() {
@@ -13,6 +14,10 @@ function BookDetail() {
     const [error, setError] = useState();
 
     const [loading, setLoading] = useState(false);
+
+    const date = new Date(data.publishedDate);
+
+    // const dateFormat = new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(date);
 
     useEffect(() => {
         setLoading(true);
@@ -33,15 +38,42 @@ function BookDetail() {
     if (loading) return <Loading />
 
     return (
-        <div>
-            <img src={data.imageLinks?.thumbnail} alt={data.title} />
-            <h3>{data.title}</h3>
-            <h4>Autor: {data.authors}</h4>
-            <h4>Editorial: {data.publisher}</h4>
-            <h5>Edición: {data.publishedDate}</h5>
-            <p>{parse('' + data.description)}</p>
-            <p>Categorias: {data.categories?.join(', ').toString() || "No data."}</p>
-        </div>
+        <Container>
+            <h4 className="text-center mb-5">{data.title}</h4>
+            <Row className="mb-4 border-bottom">
+                <Col lg={2} md={3} className="text-center">
+                    <img src={data.imageLinks?.thumbnail} alt={data.title} />
+                    <p className="mt-1">Rating: {data.averageRating}</p>
+                    <p>({data.ratingsCount} ratings)</p>
+                </Col>
+                <Col>
+                    <p className="text-primary">{data.authors}</p>
+                    <p className="text-muted">{data.publisher}, {data.publishedDate} - {data.pageCount} pages</p>
+                    <p>{parse('' + data.description)}</p>
+                </Col>
+            </Row>
+            <h5>Info biblio</h5>
+            <Row>
+                <Col md={2}>Title</Col>
+                <Col>{data.title}</Col>
+            </Row>
+            <Row>
+                <Col md={2}>Author</Col>
+                <Col>{data.authors}</Col>
+            </Row>
+            <Row>
+                <Col md={2}>Editor</Col>
+                <Col>{data.publisher}, {date.getFullYear()}</Col>
+            </Row>
+            <Row>
+                <Col md={2}>ISBN</Col>
+                <Col>{data.industryIdentifiers[0].identifier}</Col>
+            </Row>
+            <Row>
+                <Col md={2}>Num. Pages</Col>
+                <Col>{data.pageCount}</Col>
+            </Row>
+        </Container>
     )
 }
 

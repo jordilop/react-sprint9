@@ -2,6 +2,7 @@ import { Nav, Navbar, Button } from "react-bootstrap";
 import { MdLogin, MdLogout, MdPersonOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import logo from "../../assets/img/logo-book.png";
 
 function NavBar() {
 
@@ -21,7 +22,14 @@ function NavBar() {
 
     return (
         <Navbar expand="md">
-            <Navbar.Brand as={Link} to='/'>LogoS9</Navbar.Brand>
+            <Navbar.Brand as={Link} to='/'>
+                <img
+                    src={logo}
+                    width="120"
+                    className="d-inline-block align-top"
+                    alt="logo-book"
+                />
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="text-center">
                 <Nav className="me-auto" as="ul">
@@ -29,7 +37,7 @@ function NavBar() {
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/about'>About</Nav.Link>
+                        <Nav.Link as={Link} to='/books'>Books</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
                         <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
@@ -52,14 +60,18 @@ function NavBar() {
                         <Nav as="ul">
                             <Nav.Item as="li" className="border-end">
                                 <Nav.Link as={Link} to='/login'>
-                                    <MdLogin size="1.5rem" className="me-2" />
-                                    Login
+                                    <Button variant="outline-primary" size="sm">
+                                        <MdLogin size="1.5rem" className="me-2" />
+                                        Login
+                                    </Button>
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item as="li">
                                 <Nav.Link as={Link} to='/register'>
-                                    <MdPersonOutline size="1.5rem" className="me-2" />
-                                    Sign up
+                                    <Button variant="outline-warning" size="sm">
+                                        <MdPersonOutline size="1.5rem" className="me-2" />
+                                        Sign up
+                                    </Button>
                                 </Nav.Link>
                             </Nav.Item>
                         </Nav>
