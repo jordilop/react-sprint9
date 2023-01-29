@@ -1,12 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
-
+import "./index.css"
 
 function Header() {
 
 
     return (
-        <header>
+        <header className="mb-5">
             <Container>
                 <Row className="align-items-center">
                     <Col md={12}>

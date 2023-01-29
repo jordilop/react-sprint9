@@ -34,7 +34,9 @@ function BookSearch() {
         setTotalItems(0);
     }
 
-    const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
+    // const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
+    const filterData = (books) => books ? books : [];
+
 
     const fetchData = (startIndex) => {
         setLoading(true);

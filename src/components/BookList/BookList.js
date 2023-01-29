@@ -2,6 +2,8 @@ import { Container, Row } from "react-bootstrap";
 import BookCard from "../BookCard/BookCard";
 import Loading from "../Loading/Loading";
 
+import defaultCover from "../../assets/img/default-cover.jpg"
+
 function BookList({ data, loading }) {
 
     return (
@@ -17,7 +19,7 @@ function BookList({ data, loading }) {
                                     <BookCard
                                         key={index}
                                         title={book.volumeInfo.title}
-                                        image={book.volumeInfo.imageLinks.thumbnail}
+                                        image={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : defaultCover}
                                         bookId={book.id}
                                     />
                                 )
