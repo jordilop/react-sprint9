@@ -1,9 +1,12 @@
+import { Container } from "react-bootstrap";
+import errorImage from "../../assets/img/404-page.jpg"
+
 
 function Error() {
     return (
-        <div>
-            <h3>Error 404</h3>
-        </div>
+        <Container fluid>
+            <img src={errorImage} alt="404 page error" className="img-fluid" />
+        </Container>
     )
 }
 
