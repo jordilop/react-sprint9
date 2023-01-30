@@ -25,7 +25,7 @@ function BookList({ data, loading }) {
                                 )
                             })
                             :
-                            <div>No data.</div>
+                            <div>Sin datos.</div>
                 }
             </Row>
         </Container>

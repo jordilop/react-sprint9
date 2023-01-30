@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import logo from "../../assets/img/logo-book-w.png";
 
-import "./test.css"
+import "./index.css"
 
 function NavBar() {
 
@@ -36,24 +36,24 @@ function NavBar() {
             <Navbar.Collapse id="basic-navbar-nav" className="text-center">
                 <Nav className="me-auto" as="ul">
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/'>Inicio</Nav.Link>
+                        <Nav.Link as={Link} to='/' className="text-white">Inicio</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/books'>Libros</Nav.Link>
+                        <Nav.Link as={Link} to='/books' className="text-white">Libros</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/contact'>Contacto</Nav.Link>
+                        <Nav.Link as={Link} to='/contact' className="text-white">Contacto</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 {
                     user ?
                         <Nav className="align-items-center">
                             <Dropdown align="end">
-                                <Dropdown.Toggle variant="outline-light" id="dropdown-basic">
+                                <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
                                     <MdAccountCircle size="1.5rem" className="me-2" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.ItemText>{user.email}</Dropdown.ItemText>
+                                    <Dropdown.Header>{user.email}</Dropdown.Header>
                                     {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> */}
                                     <Dropdown.Divider />
                                     <Dropdown.Item onClick={handleLogout}><MdLogout size="1.5rem" className="me-2" />Logout</Dropdown.Item>
@@ -63,7 +63,7 @@ function NavBar() {
                         :
                         <Nav className="align-items-center">
                             <Dropdown align="end" >
-                                <Dropdown.Toggle variant="outline-light" id="dropdown-basic">
+                                <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
                                     <MdAccountCircle size="1.5rem" className="me-2" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -72,7 +72,7 @@ function NavBar() {
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
                                     <Dropdown.Item as={Link} to='/register'>
-                                        <MdPersonOutline size="1.5rem" className="me-2" />Sign up
+                                        <MdPersonOutline size="1.5rem" className="me-2" />Registro
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

@@ -74,24 +74,36 @@ function BookSearch() {
 
     return (
         <>
-            <Container>
+            <Container className="my-3">
                 <Row className="justify-content-center">
                     <Col md={6} className="text-center">
                         <Form className="my-2" onSubmit={e => e.preventDefault()}>
-                            <InputGroup>
-                                <InputGroup.Text id="btnSearch"><FaSearch /></InputGroup.Text>
-                                <Form.Control
-                                    type="search"
-                                    placeholder="Search"
-                                    className="me-2"
-                                    aria-label="Search"
-                                    value={searchParams.get('q') ? searchParams.get('q') : ''}
-                                    onChange={handleChange}
-                                />
-                            </InputGroup>
-                            <Form.Text className="text-muted">
-                                To display results, minimum length 3 characters.
-                            </Form.Text>
+                            <Row>
+                                <Col>
+                                    <InputGroup>
+                                        <InputGroup.Text id="btnSearch"><FaSearch /></InputGroup.Text>
+                                        <Form.Control
+                                            type="search"
+                                            placeholder="Buscar"
+                                            className="me-2"
+                                            aria-label="Search"
+                                            value={searchParams.get('q') ? searchParams.get('q') : ''}
+                                            onChange={handleChange}
+                                        />
+                                    </InputGroup>
+                                    <Form.Text className="text-muted">
+                                        Para buscar, mínimo 3 caracteres.
+                                    </Form.Text>
+                                </Col>
+                                <Col md={2}>
+                                    <Form.Select>
+                                        <option>Todo</option>
+                                        <option value="1">Título</option>
+                                        <option value="2">Author</option>
+                                        <option value="3">ISBN</option>
+                                    </Form.Select>
+                                </Col>
+                            </Row>
                         </Form>
                     </Col>
                 </Row>

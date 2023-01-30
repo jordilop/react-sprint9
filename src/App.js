@@ -3,6 +3,7 @@ import './App.css';
 import Router from './router/Router/Router';
 import { AuthProvider } from './context/authContext';
 import Header from './pages/Header/Header';
+import Footer from './pages/Footer/Footer';
 
 function App() {
   return (
@@ -10,7 +11,10 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Header />
-          <Router />
+          <main>
+            <Router />
+          </main>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>

@@ -1,0 +1,8 @@
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url("../../assets/img/bg-books.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    min-height: 20rem;
+}

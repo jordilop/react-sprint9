@@ -6,7 +6,7 @@ function Header() {
 
 
     return (
-        <header className="mb-5">
+        <header>
             <Container>
                 <Row className="align-items-center">
                     <Col md={12}>

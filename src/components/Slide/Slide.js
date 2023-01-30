@@ -18,7 +18,7 @@ function Slide() {
 
     return (
         <Container fluid className="p-0">
-            <Carousel>
+            <Carousel variant="dark">
                 {
                     fakeData.map((book, item) => {
                         return (
