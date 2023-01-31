@@ -34,9 +34,12 @@ function BookSearch() {
         setTotalItems(0);
     }
 
+    const [select, setSelect] = useState('');
+
     const handleChangeSelect = e => {
         const { value } = e.target;
-        value === 'all' ? console.log('Aquí NADA') : console.log(`Aquí ${value}`);
+        // value === 'all' ? console.log('Aquí NADA') : console.log(`Aquí ${value}`);
+        value === 'all' ? setSelect('') : setSelect(`${value}:`);
     }
 
     // const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
@@ -45,7 +48,7 @@ function BookSearch() {
 
     const fetchData = (startIndex) => {
         setLoading(true);
-        getBookList(startIndex, maxResults, 'books', 'es', searchParams.get('q'))
+        getBookList(startIndex, maxResults, 'books', 'es', searchParams.get('q'), select)
             .then(response => {
                 setData(response.data);
                 !totalItems && setTotalItems(response.data.totalItems);
