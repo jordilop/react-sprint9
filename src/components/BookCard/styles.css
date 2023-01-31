@@ -2,3 +2,10 @@
     transform: scale(1.02) ;
     opacity: 0.8;
 }
+
+.line-truncate {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+}

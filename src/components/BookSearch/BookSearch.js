@@ -19,7 +19,7 @@ function BookSearch() {
 
     //paginate
     const [currentPage, setCurrentPage] = useState(searchParams.get("page") ? Number(searchParams.get("page")) : 1);
-    const [maxResults] = useState(40);
+    const [maxResults] = useState(20);
     const [startIndex, setStartIndex] = useState(searchParams.get("page") ? maxResults * (currentPage - 1) : 0);
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
@@ -32,6 +32,11 @@ function BookSearch() {
         setStartIndex(0);
         setCurrentPage(1);
         setTotalItems(0);
+    }
+
+    const handleChangeSelect = e => {
+        const { value } = e.target;
+        value === 'all' ? console.log('Aquí NADA') : console.log(`Aquí ${value}`);
     }
 
     // const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
@@ -76,7 +81,7 @@ function BookSearch() {
         <>
             <Container className="my-3">
                 <Row className="justify-content-center">
-                    <Col md={6} className="text-center">
+                    <Col md={9} className="text-center">
                         <Form className="my-2" onSubmit={e => e.preventDefault()}>
                             <Row>
                                 <Col>
@@ -85,24 +90,24 @@ function BookSearch() {
                                         <Form.Control
                                             type="search"
                                             placeholder="Buscar"
-                                            className="me-2"
+                                            name="q"
                                             aria-label="Search"
                                             value={searchParams.get('q') ? searchParams.get('q') : ''}
                                             onChange={handleChange}
                                         />
                                     </InputGroup>
-                                    <Form.Text className="text-muted">
-                                        Para buscar, mínimo 3 caracteres.
-                                    </Form.Text>
                                 </Col>
-                                <Col md={2}>
-                                    <Form.Select>
-                                        <option>Todo</option>
-                                        <option value="1">Título</option>
-                                        <option value="2">Author</option>
-                                        <option value="3">ISBN</option>
+                                <Col md={3} className="my-2 my-md-0">
+                                    <Form.Select name="select" onChange={handleChangeSelect}>
+                                        <option value="all">Todo</option>
+                                        <option value="intitle">Título</option>
+                                        <option value="author">Author</option>
+                                        <option value="isbn">ISBN</option>
                                     </Form.Select>
                                 </Col>
+                                <Form.Text className="text-muted">
+                                    Para buscar, mínimo 3 caracteres.
+                                </Form.Text>
                             </Row>
                         </Form>
                     </Col>

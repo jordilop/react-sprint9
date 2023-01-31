@@ -4,10 +4,14 @@ import "./styles.css";
 
 function BookCard({ title, image, bookId }) {
     return (
-        <Card border="0" className="text-center animate__animated animate__zoomIn mb-2 card-hover" style={{ width: '10rem' }}>
-            <Link to={`${bookId}`}>
-                <Card.Img src={image} title={title} />
-            </Link>
+        <Card style={{ width: '10rem' }} className="shadow border-0 text-center m-2 card-hover">
+            <Card.Img variant="top" src={image} className="img-fluid w-100 mx-auto mt-4" />
+            <Card.Body className="px-0">
+                <Card.Text className="line-truncate" >
+                    <small>{title}</small>
+                </Card.Text>
+            </Card.Body>
+            <Link to={`${bookId}`} className="stretched-link" title={title}></Link>
         </Card>
     )
 }

@@ -2,12 +2,12 @@ import { Container, Row } from "react-bootstrap";
 import BookCard from "../BookCard/BookCard";
 import Loading from "../Loading/Loading";
 
-import defaultCover from "../../assets/img/default-cover.jpg"
+import defaultCover from "../../assets/img/default-cover.jpg";
 
 function BookList({ data, loading }) {
 
     return (
-        <Container>
+        <Container className="mb-3">
             <Row className="justify-content-center">
                 {
                     loading ?

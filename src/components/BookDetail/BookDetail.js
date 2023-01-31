@@ -7,6 +7,8 @@ import Loading from "../Loading/Loading";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { FaAmazon } from "react-icons/fa";
 
+import defaultCover from "../../assets/img/default-cover.jpg";
+
 function BookDetail() {
 
     const { bookId } = useParams();
@@ -41,7 +43,7 @@ function BookDetail() {
                 <h4 className="text-center mb-5">{data.title}</h4>
                 <Row className="mb-4 border-bottom">
                     <Col lg={2} md={3} className="text-center">
-                        <img src={data.imageLinks?.thumbnail} alt={data.title} />
+                        <img src={data.imageLinks ? data.imageLinks?.thumbnail : defaultCover} alt={data.title} className="img-fluid" />
                         <p className="mt-1 mb-0">Puntuación: {data.averageRating ? data.averageRating : "N/A"}</p>
                         <p>({data.ratingsCount ? data.ratingsCount : 0} reseñas)</p>
                     </Col>
