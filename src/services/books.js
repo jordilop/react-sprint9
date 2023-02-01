@@ -1,6 +1,6 @@
 import { axiosClient } from "./apiUrl";
 
-export const getBookList = (startIndex, maxResults, printType, langRestrict, searchTerm, select) => {
+export const getBookList = (startIndex, maxResults, printType, langRestrict, searchTerm) => {
     return axiosClient.get('/volumes', {
         params: {
             startIndex: startIndex,

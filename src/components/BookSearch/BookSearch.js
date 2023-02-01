@@ -40,7 +40,7 @@ function BookSearch() {
 
     const fetchData = (startIndex) => {
         setLoading(true);
-        getBookList(startIndex, maxResults, 'books', 'es', searchParams.get('q'), select)
+        getBookList(startIndex, maxResults, 'books', 'es', searchParams.get('q'))
             .then(response => {
                 setData(response.data);
                 !totalItems && setTotalItems(response.data.totalItems);
