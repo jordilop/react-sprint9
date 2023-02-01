@@ -7,7 +7,7 @@ export const getBookList = (startIndex, maxResults, printType, langRestrict, sea
             maxResults: maxResults,
             printType: printType,
             langRestrict: langRestrict,
-            q: `intitle:${searchTerm}`
+            q: `${searchTerm}`
         }
     });
 }

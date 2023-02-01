@@ -34,11 +34,6 @@ function BookSearch() {
         setTotalItems(0);
     }
 
-    const handleChangeSelect = e => {
-        const { value } = e.target;
-        value === 'all' ? console.log('Aquí NADA') : console.log(`Aquí ${value}`);
-    }
-
     // const filterData = (books) => books ? books.filter(book => book.volumeInfo.hasOwnProperty('imageLinks')) : [];
     const filterData = (books) => books ? books : [];
 
@@ -97,16 +92,16 @@ function BookSearch() {
                                         />
                                     </InputGroup>
                                 </Col>
-                                <Col md={3} className="my-2 my-md-0">
+                                {/* <Col md={3} className="my-2 my-md-0">
                                     <Form.Select name="select" onChange={handleChangeSelect}>
                                         <option value="all">Todo</option>
                                         <option value="intitle">Título</option>
                                         <option value="author">Author</option>
                                         <option value="isbn">ISBN</option>
                                     </Form.Select>
-                                </Col>
+                                </Col> */}
                                 <Form.Text className="text-muted">
-                                    Para buscar, mínimo 3 caracteres.
+                                    Para buscar, mínimo 3 caracteres. Comillas (" ") para coincidencias exactas.
                                 </Form.Text>
                             </Row>
                         </Form>
@@ -115,14 +110,16 @@ function BookSearch() {
             </Container>
             {
                 dataFilter.length > 0 &&
-                <Paginate
-                    maxResults={maxResults}
-                    totalItems={totalItems}
-                    paginate={paginate}
-                    currentPage={currentPage}
-                    prevPage={prevPage}
-                    nextPage={nextPage}
-                />
+                <Container>
+                    <Paginate
+                        maxResults={maxResults}
+                        totalItems={totalItems}
+                        paginate={paginate}
+                        currentPage={currentPage}
+                        prevPage={prevPage}
+                        nextPage={nextPage}
+                    />
+                </Container>
             }
             <BookList data={dataFilter} loading={loading} />
         </>
