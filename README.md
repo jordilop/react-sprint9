@@ -32,6 +32,10 @@ $ npm i animate.css
 
 $ npm i html-react-parser
 
+## sass
+
+$ npm i sass
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
