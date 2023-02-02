@@ -57,11 +57,11 @@ function Login() {
             <Row className="vh-100 justify-content-center align-items-center">
                 <Col md={6} className="border rounded p-3 p-md-5">
                     <h4 className="text-center mb-4">Login</h4>
-                    <Form className="text-secondary" onSubmit={handleSubmit}>
+                    <Form className="text-black" onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formEmail">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Correo electrónico</Form.Label>
                             <InputGroup>
-                                <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
+                                <Form.Control type="email" name="email" placeholder="Email" onChange={handleChange} />
                                 <InputGroup.Text id="btnEmail">@</InputGroup.Text>
                             </InputGroup>
                         </Form.Group>
@@ -76,7 +76,7 @@ function Login() {
                         </Form.Group>
                         <Form.Group className="mb-3 text-center" controlId="formForgot">
                             <Form.Label>
-                                Forgot password?<Link className="link-secondary ms-1" to='/reset'>Click</Link>
+                                No recuerdas el password?<Link className="link-primary ms-1" to='/reset'>Click</Link>
                             </Form.Label>
                         </Form.Group>
                         <Col lg={6} className="d-grid mx-auto">
@@ -91,7 +91,7 @@ function Login() {
                         </Col>
                         <Form.Group className="my-3 text-center" controlId="formRegister">
                             <Form.Label>
-                                Don't have an account?<Link className="link-primary ms-1" to='/register'>Register here</Link>
+                                No estas registrado?<Link className="link-primary ms-1" to='/register'>Registrate</Link>
                             </Form.Label>
                         </Form.Group>
                         {

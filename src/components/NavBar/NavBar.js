@@ -48,8 +48,8 @@ function NavBar() {
                 {
                     user ?
                         <Nav className="align-items-center">
-                            <Dropdown align="end">
-                                <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
+                            <Dropdown align="end" className="outline-white">
+                                <Dropdown.Toggle id="dropdown-basic">
                                     <MdAccountCircle size="1.5rem" className="me-2" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
@@ -62,8 +62,8 @@ function NavBar() {
                         </Nav>
                         :
                         <Nav className="align-items-center">
-                            <Dropdown align="end" >
-                                <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
+                            <Dropdown align="end" className="outline-white">
+                                <Dropdown.Toggle id="dropdown-basic">
                                     <MdAccountCircle size="1.5rem" className="me-2" />
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>

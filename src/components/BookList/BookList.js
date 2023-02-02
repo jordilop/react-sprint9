@@ -4,7 +4,7 @@ import Loading from "../Loading/Loading";
 
 import defaultCover from "../../assets/img/default-cover.jpg";
 
-function BookList({ data, loading }) {
+function BookList({ data, loading, width }) {
 
     return (
         <Container className="mb-3">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
-import { Alert } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 
 function ResetPassword() {
 
@@ -19,7 +19,7 @@ function ResetPassword() {
         });
     }
 
-    const handleResetPassword = async e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setError('');
         setValid('');
@@ -32,40 +32,33 @@ function ResetPassword() {
     }
 
     return (
-        <div>
-            <h2>ResetPassword</h2>
-            <form onSubmit={handleResetPassword}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="mail@mail.com"
-                        onChange={handleChange}
-                    />
-                </div>
-                <button>Reset Password</button>
-            </form>
-            {
-                error
-                &&
-                <div className="d-flex">
-                    <Alert variant="danger" className="mt-2">
-                        <Alert.Heading>Error</Alert.Heading>
-                        {error}
-                    </Alert>
-                </div>
-            }
-            {
-                valid
-                &&
-                <div className="d-flex">
-                    <Alert variant="success" className="mt-2">
-                        {valid}
-                    </Alert>
-                </div>
-            }
-        </div>
+        <Container>
+            <Row className="vh-100 justify-content-center align-items-center">
+                <Col md={6} className="border rounded p-3 p-md-5">
+                    <h4 className="text-center mb-4">Restaurar Password</h4>
+                    <Form className="text-muted" onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formEmail">
+                            <Form.Label>Ingresa tu email a continuación y recibirás un correo electrónico para restablecer su contraseña.</Form.Label>
+                            <InputGroup className="my-2">
+                                <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
+                                <InputGroup.Text id="btnEmail">@</InputGroup.Text>
+                            </InputGroup>
+                        </Form.Group>
+                        <Col lg={6} className="d-grid mx-auto my-3">
+                            <Button variant="secondary" type="submit">Enviar</Button>
+                        </Col>
+                        {
+                            error &&
+                            <Row className="text-center">
+                                <Alert variant="danger">
+                                    {error}
+                                </Alert>
+                            </Row>
+                        }
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

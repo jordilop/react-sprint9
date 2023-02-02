@@ -47,11 +47,11 @@ function Register() {
             <Row className="vh-100 justify-content-center align-items-center">
                 <Col md={6} className="border rounded p-3 p-md-5">
                     <h4 className="text-center mb-4">Register</h4>
-                    <Form className="text-secondary" onSubmit={handleSubmit}>
+                    <Form className="text-black" onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formEmail">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Correo electrónico</Form.Label>
                             <InputGroup>
-                                <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} />
+                                <Form.Control type="email" name="email" placeholder="Email" onChange={handleChange} />
                                 <InputGroup.Text id="btnEmail">@</InputGroup.Text>
                             </InputGroup>
                         </Form.Group>
@@ -65,12 +65,12 @@ function Register() {
                             </InputGroup>
                         </Form.Group>
                         <Col lg={6} className="d-grid mx-auto">
-                            <Button variant="warning" type="submit">Sign up</Button>
+                            <Button variant="secondary" type="submit">Registrarse</Button>
                         </Col>
                         <div className="border-bottom my-3"></div>
                         <Form.Group className="my-3 text-center" controlId="formRegister">
                             <Form.Label>
-                                Do you have an account?<Link className="link-primary ms-1" to='/login'>Login</Link>
+                                Ya estas registrado?<Link className="link-primary ms-1" to='/login'>Login</Link>
                             </Form.Label>
                         </Form.Group>
                         {
