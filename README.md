@@ -11,15 +11,21 @@ https://jordilop.github.io/sprint9/
 ## React
 
 react-router-dom
+
 axios
 
 ## Styles
 
 bootstrap
+
 react-bootstrap
+
 react-icons
+
 animate.css
+
 sass
+
 styled-components
 
 ## services
