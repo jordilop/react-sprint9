@@ -8,7 +8,7 @@ function ProtectedRoute({ children }) {
 
     if (loading) return <Loading />
 
-    if (!user) return <Navigate to='/login' />
+    if (!user) return <Navigate to={process.env.PUBLIC_URL + '/login'} />
 
     return <>{children}</>
 }
