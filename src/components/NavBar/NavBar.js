@@ -1,5 +1,5 @@
 import { Nav, Navbar, Dropdown } from "react-bootstrap";
-import { MdLogin, MdLogout, MdPersonOutline, MdAccountCircle } from "react-icons/md";
+import { MdLogout, MdAccountCircle } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import logo from "../../assets/img/logo-book-w.png";
@@ -54,28 +54,19 @@ function NavBar() {
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                     <Dropdown.Header>{user.email}</Dropdown.Header>
-                                    {/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> */}
                                     <Dropdown.Divider />
                                     <Dropdown.Item onClick={handleLogout}><MdLogout size="1.5rem" className="me-2" />Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </Nav>
                         :
-                        <Nav className="align-items-center">
-                            <Dropdown align="end" className="outline-white">
-                                <Dropdown.Toggle id="dropdown-basic">
-                                    <MdAccountCircle size="1.5rem" className="me-2" />
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item as={Link} to='/login'>
-                                        <MdLogin size="1.5rem" className="me-2" />Login
-                                    </Dropdown.Item>
-                                    <Dropdown.Divider />
-                                    <Dropdown.Item as={Link} to='/register'>
-                                        <MdPersonOutline size="1.5rem" className="me-2" />Registro
-                                    </Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
+                        <Nav className="align-items-center" as="ul">
+                            <Nav.Item as="li" className="line">
+                                <Nav.Link as={Link} to='/login' className="text-mute px-0">Login</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item as="li">
+                                <Nav.Link as={Link} to='/register' className="text-mute px-0">Registro</Nav.Link>
+                            </Nav.Item>
                         </Nav>
                 }
             </Navbar.Collapse>

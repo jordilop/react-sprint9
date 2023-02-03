@@ -1,43 +1,70 @@
 {
     "bestsellers": [
-    {
-        "isbn": "9788491296089",
-        "bookId": "oN-PEAAAQBAJ"
-    },
-    {
-        "isbn": "9788411072618",
-        "bookId": "0FCiEAAAQBAJ"
-    },
-    {
-        "isbn": "9788418118036",
-        "bookId": "yalGzgEACAAJ"
-    },
-    {
-        "isbn": "9788408261605",
-        "bookId": "xydxEAAAQBAJ"
-    },
-    {
-        "isbn": "9788467053982",
-        "bookId": "ryVnDwAAQBAJ"
-    },
-    {
-        "isbn": "9781644737651",
-        "bookId": "Ohd5zwEACAAJ"
-    },
-    {
-        "isbn": "9788491292661",
-        "bookId": "WnSREAAAQBAJ"
-    },
-    {
-        "isbn": "9788427051072",
-        "bookId": "Yx6iEAAAQBAJ"
-    },
-    {
-        "isbn": "9788416588435",
-        "bookId": "rl2REAAAQBAJ"
-    },
-    {
-        "isbn": "9788418949739",
-        "bookId": "FkVKEAAAQBAJ"
-    }
-]}
+        {
+            "isbn": "9788491296089",
+            "bookId": "oN-PEAAAQBAJ"
+        },
+        {
+            "isbn": "9788411072618",
+            "bookId": "0FCiEAAAQBAJ"
+        },
+        {
+            "isbn": "9788418118036",
+            "bookId": "yalGzgEACAAJ"
+        },
+        {
+            "isbn": "9788408261605",
+            "bookId": "xydxEAAAQBAJ"
+        },
+        {
+            "isbn": "9788467053982",
+            "bookId": "ryVnDwAAQBAJ"
+        },
+        {
+            "isbn": "9781644737651",
+            "bookId": "Ohd5zwEACAAJ"
+        },
+        {
+            "isbn": "9788491292661",
+            "bookId": "WnSREAAAQBAJ"
+        },
+        {
+            "isbn": "9788427051072",
+            "bookId": "Yx6iEAAAQBAJ"
+        },
+        {
+            "isbn": "9788416588435",
+            "bookId": "rl2REAAAQBAJ"
+        },
+        {
+            "isbn": "9788418949739",
+            "bookId": "FkVKEAAAQBAJ"
+        }
+    ],
+    "slider":[
+        {
+            "title": "Fira del Llibre d'Ocasió Antic i Modern",
+            "data": "Septiembre/Octubre",
+            "url": "http://www.gremillibrevell.cat",
+            "img": "https://gremillibrevell.cat/logo.jpg"
+        },
+        {
+            "title": "LIBER",
+            "data": "1ª quincena de octubre",
+            "url": "http://www.liber.es",
+            "img": "https://www.ifema.es/liber/img/l/portadas-libros-expuestos-liber/micro_liber_baja.jpg"
+        },
+        {
+            "title": "Saló Internacional del Còmic de Barcelona (FICOMIC)",
+            "data": "14 al 17 de Abril",
+            "url": "http://www.ficomic.com",
+            "img": "https://www.ficomic.com/IMAGES/LOGOS/FICOMIC_2019/FICOMIC-red-transparent.png"
+        },
+        {
+            "title": "Setmana del Llibrer en Català",
+            "data": "Septiembre",
+            "url": "http://www.lasetmana.cat",
+            "img": "https://lasetmana.cat/wp-content/uploads/2022/10/concurs-aparadors-griu-2022.jpg"
+        }
+    ]
+}

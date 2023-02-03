@@ -10,9 +10,20 @@
 .btn-outline-secondary:focus {
     background-color: transparent !important;
 }
+
 .btn-outline-secondary:active {
     background-color: transparent !important;
 }
+
 .btn-outline-secondary:hover {
     background-color: transparent !important;
+}
+
+
+@media screen and (min-width: 768px) {
+    .line a:last-child::after {
+        content: "|" !important;
+        color: white !important;
+        padding: 0 1rem !important;
+    }
 }

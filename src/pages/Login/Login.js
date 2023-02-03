@@ -61,14 +61,24 @@ function Login() {
                         <Form.Group className="mb-3" controlId="formEmail">
                             <Form.Label>Correo electrónico</Form.Label>
                             <InputGroup>
-                                <Form.Control type="email" name="email" placeholder="Email" onChange={handleChange} />
+                                <Form.Control
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    onChange={handleChange}
+                                />
                                 <InputGroup.Text id="btnEmail">@</InputGroup.Text>
                             </InputGroup>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPassword">
                             <Form.Label>Password</Form.Label>
                             <InputGroup>
-                                <Form.Control type={user.showPassword ? " text" : "password"} name="password" placeholder="Password" onChange={handleChange} />
+                                <Form.Control
+                                    type={user.showPassword ? " text" : "password"}
+                                    name="password"
+                                    placeholder="Password"
+                                    onChange={handleChange}
+                                />
                                 <InputGroup.Text id="btnEmail" type="button" onClick={handleShowPassword}>
                                     {user.showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </InputGroup.Text>

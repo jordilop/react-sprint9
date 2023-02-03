@@ -1,36 +1,37 @@
 import { Carousel, Container } from "react-bootstrap";
-import testImage from "../../assets/img/slide.png"
+import { Link } from "react-router-dom";
+import { Overlay } from "./StyledSlide";
 
-
-function Slide() {
+function Slide({ data }) {
 
     const imgStyle = {
-        maxHeight: '20rem'
+        height: '30rem',
+        objectFit: 'cover'
     }
-
-    const fakeData = [
-        { title: 'First book', src: { testImage }, },
-        { title: 'Second book', src: { testImage }, },
-        { title: 'Third book', src: { testImage }, },
-        { title: 'Fourth book', src: { testImage }, },
-        { title: 'Fifth book', src: { testImage }, },
-    ];
 
     return (
         <Container fluid className="p-0">
-            <Carousel variant="dark">
+            <Carousel>
                 {
-                    fakeData.map((book, item) => {
+                    data.map((book, item) => {
                         return (
                             <Carousel.Item key={item}>
                                 <img
                                     className="d-block w-100" style={imgStyle}
-                                    src={testImage}
+                                    src={book.img}
                                     alt={book.title}
                                 />
+                                <Overlay />
                                 <Carousel.Caption>
-                                    <h3>{book.title}</h3>
-                                    <p>{book.title}</p>
+                                    <h3>
+                                        <Link
+                                            className="text-white"
+                                            onClick={() => window.open(book.url)}
+                                        >
+                                            {book.title}
+                                        </Link>
+                                    </h3>
+                                    <p>{book.data}</p>
                                 </Carousel.Caption>
                             </Carousel.Item>)
                     })

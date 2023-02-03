@@ -1,6 +1,6 @@
 import { Col, Container, Nav, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import "./index.css";
 
 function Footer() {
@@ -11,7 +11,6 @@ function Footer() {
         <footer>
             <Container fluid>
                 <Row className="footer-links text-white align-items-center justify-content-center py-3">
-
                     <Nav className="justify-content-center">
                         <Nav.Item>
                             <Nav.Link as={Link} to='/' className="text-white py-0">Inicio</Nav.Link>
@@ -20,7 +19,7 @@ function Footer() {
                             <Nav.Link as={Link} to='/books' className="text-white py-0">Libros</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to='/contacto' className="text-white py-0">Contacto</Nav.Link>
+                            <Nav.Link as={Link} to='/contact' className="text-white py-0">Contacto</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link as={Link} to='login' className="text-white py-0">Login</Nav.Link>
@@ -60,11 +59,14 @@ function Footer() {
                 </Row>
                 <Row className="bg-white justify-content-center">
                     <Col className="text-center my-3">
+                        <p className="mb-0">
+                            <FaGithub size="1.5rem" className="me-2" />
+                            repositorio <Link onClick={() => window.open(`https://github.com/jordilop/sprint9`)} >aquí</Link></p>
                         <p className="mb-0">© jordilop - {date.getFullYear()}. Reservados todos los derechos.</p>
                     </Col>
                 </Row>
             </Container>
-        </footer>
+        </footer >
     )
 }
 

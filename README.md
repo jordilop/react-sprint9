@@ -36,6 +36,10 @@ $ npm i html-react-parser
 
 $ npm i sass
 
+## styled-components
+
+$ npm i styled-components
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

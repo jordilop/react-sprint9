@@ -1,14 +1,14 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import Slide from "../../components/Slide/Slide";
-import img from "../../assets/img/slide.png";
-import "./index.css";
-import { Link } from "react-router-dom";
-
-import jsonData from "../../assets/data/libros-mas-vendidos.json";
-import { getBookDetails } from "../../services/books";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import { getBookDetails } from "../../services/books";
+import { Link } from "react-router-dom";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import Slide from "../../components/Slide/Slide";
 import BookList from "../../components/BookList/BookList";
+import { FaAward, FaBookOpen } from "react-icons/fa";
+import jsonData from "../../assets/data/libros-mas-vendidos.json";
+import "./index.css";
+
 
 function Home() {
 
@@ -28,12 +28,10 @@ function Home() {
                 setLoading(false);
             }))
             .catch(error => {
-                setError(error)
+                setError(error);
                 setLoading(false);
             });
     }, []);
-
-    console.log(data);
 
     return (
         <Container fluid>
@@ -43,54 +41,23 @@ function Home() {
                     <Button variant="secondary" as={Link} to='/books'>Ir al buscador</Button>
                 </Col>
             </Row>
-
-            <h3>Libros más vendidos {date.getFullYear()}</h3>
-            <BookList data={data} loading={loading} />
-
-            <Row className="justify-content-center my-3 ">
-                <Col md={3} className="d-flex my-3 my-md-0 justify-content-center">
-                    <Card style={{ width: '20rem' }} className="shadow border-0 text-center card-hover">
-                        <Card.Img variant="top" src={img} className="img-fluid w-100 mx-auto mt-4" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="warning">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col md={3} className="d-flex my-3 my-md-0 justify-content-center">
-                    <Card style={{ width: '20rem' }} className="shadow border-0 text-center card-hover">
-                        <Card.Img variant="top" src={img} className="img-fluid w-100 mx-auto mt-4" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="warning">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col md={3} className="d-flex my-3 my-md-0 justify-content-center">
-                    <Card style={{ width: '20rem' }} className="shadow border-0 text-center card-hover">
-                        <Card.Img variant="top" src={img} className="img-fluid w-100 mx-auto mt-4" />
-                        <Card.Body>
-                            <Card.Title>Card Title</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="warning">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+            {
+                !error ?
+                    <Row className="justify-content-center my-3">
+                        <h3 className="text-center text-uppercase my-1"><FaAward className="me-4" />Libros más vendidos {date.getFullYear()}</h3>
+                        <Col md={9}>
+                            <BookList data={data} loading={loading} />
+                        </Col>
+                    </Row>
+                    :
+                    <Row className="justify-content-center my-3">
+                        {error}
+                    </Row>
+            }
             <Row className="justify-content-center my-3">
+                <h3 className="text-center text-uppercase mt-1 mb-3"><FaBookOpen className="me-4" />Próximos eventos {date.getFullYear()}</h3>
                 <Col md={6}>
-                    <Slide />
+                    <Slide data={jsonData.slider} />
                 </Col>
             </Row>
         </Container>
