@@ -24,7 +24,7 @@ function NavBar() {
 
     return (
         <Navbar expand="md" variant="dark">
-            <Navbar.Brand as={Link} to='/'>
+            <Navbar.Brand as={Link} to={process.env.PUBLIC_URL}>
                 <img
                     src={logo}
                     width="120"
@@ -36,13 +36,13 @@ function NavBar() {
             <Navbar.Collapse id="basic-navbar-nav" className="text-center">
                 <Nav className="me-auto" as="ul">
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/' className="text-white">Inicio</Nav.Link>
+                        <Nav.Link as={Link} to={process.env.PUBLIC_URL} className="text-white">Inicio</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/books' className="text-white">Libros</Nav.Link>
+                        <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/books'} className="text-white">Libros</Nav.Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                        <Nav.Link as={Link} to='/contact' className="text-white">Contacto</Nav.Link>
+                        <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/contact'} className="text-white">Contacto</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 {
@@ -62,10 +62,10 @@ function NavBar() {
                         :
                         <Nav className="align-items-center" as="ul">
                             <Nav.Item as="li" className="line">
-                                <Nav.Link as={Link} to='/login' className="text-mute px-0">Login</Nav.Link>
+                                <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/login'} className="text-mute px-0">Login</Nav.Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Nav.Link as={Link} to='/register' className="text-mute px-0">Registro</Nav.Link>
+                                <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/register'} className="text-mute px-0">Registro</Nav.Link>
                             </Nav.Item>
                         </Nav>
                 }

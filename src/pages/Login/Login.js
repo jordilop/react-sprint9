@@ -86,7 +86,7 @@ function Login() {
                         </Form.Group>
                         <Form.Group className="mb-3 text-center" controlId="formForgot">
                             <Form.Label>
-                                No recuerdas el password?<Link className="link-primary ms-1" to='/reset'>Click</Link>
+                                No recuerdas el password?<Link className="link-primary ms-1" to={process.env.PUBLIC_URL + '/reset'}>Click</Link>
                             </Form.Label>
                         </Form.Group>
                         <Col lg={6} className="d-grid mx-auto">
@@ -101,7 +101,7 @@ function Login() {
                         </Col>
                         <Form.Group className="my-3 text-center" controlId="formRegister">
                             <Form.Label>
-                                No estas registrado?<Link className="link-primary ms-1" to='/register'>Registrate</Link>
+                                No estas registrado?<Link className="link-primary ms-1" to={process.env.PUBLIC_URL + '/register'}>Registrate</Link>
                             </Form.Label>
                         </Form.Group>
                         {

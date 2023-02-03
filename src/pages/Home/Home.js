@@ -23,7 +23,6 @@ function Home() {
         axios
             .all(jsonData.bestsellers.map(book => getBookDetails(book.bookId)))
             .then(axios.spread((...response) => {
-                // console.log(response);
                 setData(response.map(element => element.data));
                 setLoading(false);
             }))
@@ -38,7 +37,7 @@ function Home() {
             <Row className="banner justify-content-center align-items-center text-white">
                 <Col md={5} className="text-center">
                     <h4 className="mb-3">Proyecto IT Academy para buscar libros mediante la API Google Books</h4>
-                    <Button variant="secondary" as={Link} to='/books'>Ir al buscador</Button>
+                    <Button variant="secondary" as={Link} to={process.env.PUBLIC_URL + '/books'}>Ir al buscador</Button>
                 </Col>
             </Row>
             {

@@ -25,7 +25,7 @@ function ResetPassword() {
         setValid('');
         try {
             await resetPassword(user.email);
-            setValid('We have sent you an email to reset your password');
+            setValid('Te hemos enviado un email para resetear el password');
         } catch (error) {
             setError(error.message);
         }

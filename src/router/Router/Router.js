@@ -16,14 +16,16 @@ function Router() {
     return (
         <div>
             <Routes>
-                <Route path='*' element={<Error />} />
-                <Route path='/contact' element={<Contact />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/reset' element={<ResetPassword />} />
-                <Route path='/books' element={<Books />} />
-                <Route path='/books/:bookId' element={<ProtectedRoute><BookDetail /></ProtectedRoute>} />
-                <Route path='/' element={<Home />} />
+                <Route path={process.env.PUBLIC_URL}>
+                    <Route path='*' element={<Error />} />
+                    <Route path='contact' element={<Contact />} />
+                    <Route path='login' element={<Login />} />
+                    <Route path='register' element={<Register />} />
+                    <Route path='reset' element={<ResetPassword />} />
+                    <Route path='books' element={<Books />} />
+                    <Route path='books/:bookId' element={<ProtectedRoute><BookDetail /></ProtectedRoute>} />
+                    <Route path='' element={<Home />} />
+                </Route>
             </Routes>
         </div>
     )

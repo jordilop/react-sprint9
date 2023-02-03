@@ -70,7 +70,7 @@ function Register() {
                         <div className="border-bottom my-3"></div>
                         <Form.Group className="my-3 text-center" controlId="formRegister">
                             <Form.Label>
-                                Ya estas registrado?<Link className="link-primary ms-1" to='/login'>Login</Link>
+                                Ya estas registrado?<Link className="link-primary ms-1" to={process.env.PUBLIC_URL + '/login'}>Login</Link>
                             </Form.Label>
                         </Form.Group>
                         {

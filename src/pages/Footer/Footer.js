@@ -13,19 +13,19 @@ function Footer() {
                 <Row className="footer-links text-white align-items-center justify-content-center py-3">
                     <Nav className="justify-content-center">
                         <Nav.Item>
-                            <Nav.Link as={Link} to='/' className="text-white py-0">Inicio</Nav.Link>
+                            <Nav.Link as={Link} to={process.env.PUBLIC_URL} className="text-white py-0">Inicio</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to='/books' className="text-white py-0">Libros</Nav.Link>
+                            <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/books'} className="text-white py-0">Libros</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to='/contact' className="text-white py-0">Contacto</Nav.Link>
+                            <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/contact'} className="text-white py-0">Contacto</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to='login' className="text-white py-0">Login</Nav.Link>
+                            <Nav.Link as={Link} to={process.env.PUBLIC_URL + 'login'} className="text-white py-0">Login</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to='/register' className="text-white py-0">Registro</Nav.Link>
+                            <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/register'} className="text-white py-0">Registro</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     <Nav className="justify-content-center">

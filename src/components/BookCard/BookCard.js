@@ -11,7 +11,7 @@ function BookCard({ title, image, bookId }) {
                     <small>{title}</small>
                 </Card.Text>
             </Card.Body>
-            <Link to={`/books/${bookId}`} className="stretched-link" title={title}></Link>
+            <Link to={process.env.PUBLIC_URL + `/books/${bookId}`} className="stretched-link" title={title}></Link>
         </Card>
     )
 }
