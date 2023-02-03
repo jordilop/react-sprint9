@@ -22,7 +22,7 @@ function Footer() {
                             <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/contact'} className="text-white py-0">Contacto</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link as={Link} to={process.env.PUBLIC_URL + 'login'} className="text-white py-0">Login</Nav.Link>
+                            <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/login'} className="text-white py-0">Login</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link as={Link} to={process.env.PUBLIC_URL + '/register'} className="text-white py-0">Registro</Nav.Link>
