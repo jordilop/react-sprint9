@@ -61,7 +61,7 @@ function Footer() {
                     <Col className="text-center my-3">
                         <p className="mb-0">
                             <FaGithub size="1.5rem" className="me-2" />
-                            repositorio <Link onClick={() => window.open(`https://github.com/jordilop/sprint9`)} >aquí</Link></p>
+                            repositorio <Link onClick={() => window.open(`https://github.com/jordilop/react-sprint9`)} >aquí</Link></p>
                         <p className="mb-0">© jordilop - {date.getFullYear()}. Reservados todos los derechos.</p>
                     </Col>
                 </Row>
