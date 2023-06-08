@@ -4,7 +4,7 @@ React online - Sprint 9. React entrega final
 
 ### URL
 
-https://jordilop.github.io/sprint9/
+https://jordilop.github.io/react-sprint9/
 
 # Packages
 
